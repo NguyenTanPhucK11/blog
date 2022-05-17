@@ -1,18 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Image, Row } from 'react-bootstrap';
 import './styles.scss';
 
 Post.propTypes = {};
 
-function Post({ id, imgUrl }) {
+function Post({ body, title, imgUrl }) {
   return (
     <div>
       <Container className="post">
         <Row className="d-flex justify-content-center">
+          <h2>{title}</h2>
           <Image src={imgUrl} height={400} />
-          {/* <Col>Travel {id}</Col> */}
-          {/* <Col>Colorful Festival</Col> */}
+          <h4>{body}</h4>
         </Row>
       </Container>
     </div>

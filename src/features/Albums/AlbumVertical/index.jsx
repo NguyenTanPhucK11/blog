@@ -5,7 +5,7 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 
 AlbumVertical.propTypes = {};
 
-function AlbumVertical({ id, imgUrl }) {
+function AlbumVertical({ title, imgUrl }) {
   return (
     <div className="vertical">
       <Container>
@@ -14,7 +14,7 @@ function AlbumVertical({ id, imgUrl }) {
             <Image src={imgUrl} width={70} height={70} />
           </Col>
           <Col xs={8} className="vertical__title">
-            <Row>Travel {id}</Row>
+            <Row> {title}</Row>
             <Row>Colorful Festival</Row>
           </Col>
         </Row>
