@@ -5,12 +5,16 @@ import './styles.scss';
 Post.propTypes = {};
 
 function Post({ body, title, imgUrl }) {
+  function Capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   return (
     <div>
       <Container className="post">
         <Row className="d-flex justify-content-center">
-          <h2>{title}</h2>
-          <Image src={imgUrl} height={400} />
+          <h2>{Capitalize(title)}</h2>
+          <Image style={{ padding: '16px 8px 32px 8px' }} src={imgUrl} height={400} />
           <h4>{body}</h4>
         </Row>
       </Container>

@@ -29,7 +29,7 @@ function ListAlbum({ horizontal, handleOnClick, limit }) {
   if (horizontal) {
     return (
       <ul className="album-horizontal">
-        <h2>CATEGORY</h2>
+        <h2>CATEGORY {limit}</h2>
         <div>
           {albumList.map((album) => (
             <AlbumHorizontal

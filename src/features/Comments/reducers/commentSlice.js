@@ -33,13 +33,27 @@ const initComment = [
     body:
       'non et atque\noccaecati deserunt quas accusantium unde odit nobis qui voluptatem\nquia voluptas consequuntur itaque dolor\net qui rerum deleniti ut occaecati',
   },
+  {
+    postId: 1,
+    id: 5,
+    name: 'vero eaque aliquid doloribus et culpa',
+    email: 'Hayden@althea.biz',
+    body:
+      'harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit inventore cupiditate\nvoluptates magni quo et',
+  },
 ];
 
 export const commentSlice = createSlice({
   name: 'comment',
   initialState: initComment,
-  reducers: {},
+  reducers: {
+    addNewComment: (state, action) => {
+      const newComment = [...state];
+      newComment.push(action.payload);
+      return newComment;
+    },
+  },
 });
 
-export const {} = commentSlice.actions;
+export const { addNewComment } = commentSlice.actions;
 export default commentSlice.reducer;

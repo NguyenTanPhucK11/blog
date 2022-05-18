@@ -16,7 +16,6 @@ function PostFeature({ id, imgUrl }) {
       const response = await fetch(requestUrl);
       const responseJSON = await response.json(response);
       setPostList(responseJSON);
-      await console.log(postList[id - 1]);
     }
     fetchPostList();
   }, [id]);
