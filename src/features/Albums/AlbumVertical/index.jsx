@@ -15,7 +15,7 @@ function AlbumVertical({ title, imgUrl }) {
           </Col>
           <Col xs={8} className="vertical__title">
             <Row> {title}</Row>
-            <Row>Colorful Festival</Row>
+            {/* <Row>Colorful Festival</Row> */}
           </Col>
         </Row>
       </Container>

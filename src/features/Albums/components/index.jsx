@@ -7,9 +7,7 @@ import './styles.scss';
 ListAlbum.propTypes = {};
 
 function ListAlbum({ horizontal }) {
-  const imgUrl = 'https://mdbootstrap.com/img/new/slides/041.webp';
   const listAlbum = useSelector((state) => state.album);
-  console.log(listAlbum);
   if (horizontal) {
     return (
       <>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ListAlbum from '../Albums/components';
 import Post from '../Posts/components';
@@ -22,6 +23,7 @@ function BlogPage(props) {
       </Row>
       Posts
       <ListAlbum horizontal={true} />
+      Comment
       <ListComments />
     </div>
   );
