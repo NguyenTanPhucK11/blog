@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AlbumVertical from '../AlbumVertical';
 import AlbumHorizontal from '../AlbumHorizontal';
 import { useSelector } from 'react-redux';
@@ -6,30 +6,46 @@ import './styles.scss';
 
 ListAlbum.propTypes = {};
 
-function ListAlbum({ horizontal }) {
-  const listAlbum = useSelector((state) => state.album);
+function ListAlbum({ horizontal, handleOnClick }) {
+  const initListAlbum = useSelector((state) => state.album);
+  const [albumList, setAlbumList] = useState(initListAlbum);
+
+  const handleAlbumOnClick = (id, imgUrl) => {
+    if (!handleOnClick) return;
+    handleOnClick(id, imgUrl);
+  };
+
+  useEffect(() => {
+    async function fetchAlbumList() {
+      const requestUrl = 'https://jsonplaceholder.typicode.com/albums';
+      const response = await fetch(requestUrl);
+      const responseJSON = await response.json(response);
+      setAlbumList(responseJSON.filter((data) => data.userId === 1));
+    }
+    fetchAlbumList();
+  }, []);
+
   if (horizontal) {
     return (
-      <>
-        <ul className="list-album">
-          {listAlbum.map((album) => (
-            <AlbumHorizontal
-              key={'albumHor-' + album.id}
-              title={album.title}
-              imgUrl={album.url}
-            />
-          ))}
-        </ul>
-      </>
+      <ul className="album-horizontal">
+        {albumList.map((album) => (
+          <AlbumHorizontal
+            key={'albumHor-' + album.id}
+            title={album.title}
+            albumId={album.id}
+            albumOnCick={handleAlbumOnClick}
+          />
+        ))}
+      </ul>
     );
   } else {
     return (
-      <ul className="">
-        {listAlbum.map((album) => (
+      <ul className="album-vertical">
+        {albumList.map((album) => (
           <AlbumVertical
             key={'albumVer-' + album.id}
             title={album.title}
-            imgUrl={album.url}
+            albumId={album.id}
           />
         ))}
       </ul>

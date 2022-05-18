@@ -11,20 +11,26 @@ import ListComments from '../Comments/components';
 BlogPage.propTypes = {};
 
 function BlogPage(props) {
+  const [id, setId] = useState(1);
+  const [url, setUrl] = useState('https://via.placeholder.com/600/92c952');
+  const handleOnClick = (userID, imgUrl) => {
+    setId(userID);
+    setUrl(imgUrl);
+  };
   return (
     <div className="blog">
       <Row>
         <Col xs={8}>
-          <PostFeature />
+          <PostFeature id={id} imgUrl={url} />
         </Col>
         <Col>
-          <ListAlbum horizontal={false} />
+          <ListAlbum horizontal={false} handleOnClick={handleOnClick} />
         </Col>
       </Row>
       Posts
-      <ListAlbum horizontal={true} />
+      <ListAlbum horizontal={true} handleOnClick={handleOnClick} />
       Comment
-      <ListComments />
+      <ListComments  id= {id}/>
     </div>
   );
 }

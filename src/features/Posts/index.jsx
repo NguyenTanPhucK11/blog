@@ -5,10 +5,9 @@ import { useSelector } from 'react-redux';
 
 PostFeature.propTypes = {};
 
-function PostFeature() {
-  const listAlbum = useSelector((state) => state.post);
-  const [postList, setPostList] = useState(listAlbum);
-  const imgUrl = 'https://mdbootstrap.com/img/new/slides/041.webp';
+function PostFeature({ id, imgUrl }) {
+  const initPostList = useSelector((state) => state.post);
+  const [postList, setPostList] = useState(initPostList);
 
   useEffect(() => {
     async function fetchPostList() {
@@ -17,13 +16,12 @@ function PostFeature() {
       const responseJSON = await response.json(response);
       setPostList(responseJSON);
     }
-
     fetchPostList();
   }, []);
 
   return (
     <div>
-      <Post imgUrl={imgUrl} {...postList[9]} />
+      <Post imgUrl={imgUrl} {...postList[id - 1]} />
     </div>
   );
 }

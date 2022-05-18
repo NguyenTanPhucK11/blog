@@ -1,4 +1,10 @@
-.list-album {
+.album-horizontal {
   display: flex;
   flex-direction: row;
+  overflow: scroll;
+}
+
+.album-vertical {
+  height: 400px;
+  overflow: scroll;
 }
