@@ -24,13 +24,17 @@ function BlogPage(props) {
           <PostFeature id={id} imgUrl={url} />
         </Col>
         <Col>
-          <ListAlbum horizontal={false} handleOnClick={handleOnClick} />
+          <h2 className="blog__h2">New Post</h2>
+          <ListAlbum
+            horizontal={false}
+            handleOnClick={handleOnClick}
+            limit={3}
+          />
         </Col>
       </Row>
-      Posts
-      <ListAlbum horizontal={true} handleOnClick={handleOnClick} />
-      Comment
-      <ListComments  id= {id}/>
+      <ListAlbum horizontal={true} handleOnClick={handleOnClick} limit={1} />
+      <ListAlbum horizontal={true} handleOnClick={handleOnClick} limit={2} />
+      <ListComments id={id} />
     </div>
   );
 }

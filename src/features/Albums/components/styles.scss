@@ -1,7 +1,15 @@
 .album-horizontal {
-  display: flex;
-  flex-direction: row;
-  overflow: scroll;
+  margin-bottom: 0px;
+  padding: 16px;
+
+  & > div {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+  }
+  & > h2 {
+    padding: 8px;
+  }
 }
 
 .album-vertical {

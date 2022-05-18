@@ -14,7 +14,6 @@ function ListComments({ id }) {
         'https://jsonplaceholder.typicode.com/posts/' + id + '/comments';
       const response = await fetch(requestUrl);
       const responseJSON = await response.json(response);
-      console.log(responseJSON);
       setCommentList(responseJSON);
     }
 
@@ -22,6 +21,7 @@ function ListComments({ id }) {
   }, [id]);
   return (
     <ul>
+      <h2>COMMENT</h2>
       {commentList.map((comment) => (
         <Comment {...comment} key={'comment-' + comment.id}></Comment>
       ))}

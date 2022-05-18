@@ -8,20 +8,22 @@ PostFeature.propTypes = {};
 function PostFeature({ id, imgUrl }) {
   const initPostList = useSelector((state) => state.post);
   const [postList, setPostList] = useState(initPostList);
-
+  const limit = parseInt((id - 1) / 10 + 1);
   useEffect(() => {
     async function fetchPostList() {
-      const requestUrl = 'https://jsonplaceholder.typicode.com/users/1/posts';
+      const requestUrl =
+        'https://jsonplaceholder.typicode.com/users/' + limit + '/posts';
       const response = await fetch(requestUrl);
       const responseJSON = await response.json(response);
       setPostList(responseJSON);
+      await console.log(postList[id - 1]);
     }
     fetchPostList();
-  }, []);
+  }, [id]);
 
   return (
     <div>
-      <Post imgUrl={imgUrl} {...postList[id - 1]} />
+      <Post imgUrl={imgUrl} {...postList[parseInt(id / limit) - 1]} />
     </div>
   );
 }
